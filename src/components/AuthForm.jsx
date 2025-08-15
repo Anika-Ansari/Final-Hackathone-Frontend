@@ -31,6 +31,12 @@ const RegisterForm = () => {
           withCredentials: true, // in case cookies are set
         }
       );
+    //    const backendURL = process.env.BACKEND_URL || "http://localhost:3000";
+
+    // const res = await axios.post(
+    //   `${backendURL}/api/v1/users/register`,
+    //   formData
+    // );
 
       setMessage({
         text: "✅ Registration successful!",

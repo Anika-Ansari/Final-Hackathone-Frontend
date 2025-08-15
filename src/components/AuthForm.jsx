@@ -23,20 +23,29 @@ const RegisterForm = () => {
     setMessage({ text: "", type: "" });
 
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/v1/users/register",
-        formData,
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true, // in case cookies are set
-        }
-      );
-    //    const backendURL = process.env.BACKEND_URL || "http://localhost:3000";
+      // const res = await axios.post(
+      //   "http://localhost:3000/api/v1/users/register",
+      //   formData,
+      //   {
+      //     headers: { "Content-Type": "application/json" },
+      //     withCredentials: true, // in case cookies are set
+      //   }
+      // );
 
-    // const res = await axios.post(
-    //   `${backendURL}/api/v1/users/register`,
-    //   formData
-    // );
+      const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://final-hackatnone-backend.onrender.com"
+    : "http://localhost:3000";
+
+const res = await axios.post(
+  `${API_URL}/api/v1/users/register`,
+  formData,
+  {
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+  }
+);
+
 
       setMessage({
         text: "✅ Registration successful!",

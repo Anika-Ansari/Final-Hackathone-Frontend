@@ -19,10 +19,25 @@ const LoginForm = () => {
     setMessage({ text: "", type: "" });
 
     try {
-      const res = await axios.post("http://localhost:3000/api/v1/users/login", formData, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
+      // const res = await axios.post("http://localhost:3000/api/v1/users/login" || "https://final-hackatnone-backend.onrender.com", formData, {
+      //   headers: { "Content-Type": "application/json" },
+      //   withCredentials: true,
+      // });
+
+      const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://final-hackatnone-backend.onrender.com"
+    : "http://localhost:3000";
+
+const res = await axios.post(
+  `${API_URL}/api/v1/users/login`,
+  formData,
+  {
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+  }
+);
+
 
       setMessage({ text: "✅ Login successful!", type: "success" });
 

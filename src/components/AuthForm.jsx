@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./auth.css";
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -23,15 +24,6 @@ const RegisterForm = () => {
     setMessage({ text: "", type: "" });
 
     try {
-      // const res = await axios.post(
-      //   "http://localhost:3000/api/v1/users/register",
-      //   formData,
-      //   {
-      //     headers: { "Content-Type": "application/json" },
-      //     withCredentials: true, // in case cookies are set
-      //   }
-      // );
-
       const API_URL =
   process.env.NODE_ENV === "production"
     ? "https://final-hackatnone-backend.onrender.com"
@@ -45,8 +37,6 @@ const res = await axios.post(
     withCredentials: true,
   }
 );
-
-
       setMessage({
         text: "✅ Registration successful!",
         type: "success",

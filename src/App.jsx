@@ -1,24 +1,34 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import SignupForm from "./components/AuthForm";
 import LoginForm from "./components/LoginForm";
-import TaskDashboard from "./components/TaskDashboard";
-import "./components/auth.css";
+import Gallery from "./components/Gallery.jsx";
+import ReviewCard from "./components/ReviewCard.jsx"; // make sure name matches
+import Navbar from "./components/Navbar";
+
+
 
 function App() {
   return (
-    <Router>
+    <>
+      <Navbar/> {/* optional navbar */}
       <Routes>
+        {/* Auth Page */}
         <Route path="/" element={<AuthPage />} />
-        <Route path="/dashboard" element={<TaskDashboard />} />
+
+        {/* Protected Pages */}
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/reviews" element={<ReviewCard />} />
+
+        {/* Redirect unknown routes */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 
 export default App;
 
-// 🔹 Separate component for signup/login toggle
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(false);
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // ✅ Import
+import "./auth.css";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -47,7 +48,7 @@ const res = await axios.post(
       }
 
       // ✅ Navigate to dashboard
-      navigate("/dashboard");
+      navigate("/gallery");
 
     } catch (error) {
       setMessage({
